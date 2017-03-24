@@ -108,7 +108,7 @@ namespace CafeX
             if (serviceCharge != 2.2)
                 throw new Exception($"A 2.2 service charge was expected but {serviceCharge} was calculated.");
 
-            // Lets have 30 steak sandwiches (£120).
+            // Lets have 30 steak sandwiches (£135).
             serviceCharge = Menu.CalculateServiceCharge(new List<string>(Enumerable.Repeat("Steak Sandwich", 30).ToArray()),
                                                         out issuesWithOrder);
 
