@@ -22,13 +22,13 @@ namespace CafeX
                 throw new Exception("Invalid Cola value");
 
             if (Menu.CostOfMenuItem("Coffee") != 1)
-                throw new Exception("Invalid Cola value");
+                throw new Exception("Invalid Coffe value");
 
             if (Menu.CostOfMenuItem("Cheese Sandwich") != 2)
-                throw new Exception("Invalid Cola value");
+                throw new Exception("Invalid Cheese Sandwich value");
 
             if (Menu.CostOfMenuItem("Steak Sandwich") != 4.5)
-                throw new Exception("Invalid Cola value");
+                throw new Exception("Invalid Steak Sandwich value");
         }
 
         /// <summary>
