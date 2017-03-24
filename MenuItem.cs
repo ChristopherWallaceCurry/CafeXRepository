@@ -8,11 +8,33 @@ namespace CafeX
     public class MenuItem
     {
         /// <summary>
+        /// The category of menu item.
+        /// </summary>
+        public enum MenuItemCategory
+        {
+            /// <summary>
+            /// Drinks.
+            /// </summary>
+            Drinks = 0,
+
+            /// <summary>
+            /// Cold Food.
+            /// </summary>
+            ColdFood = 1,
+
+            /// <summary>
+            /// Hot food.
+            /// </summary>
+            HotFood = 2,
+        }
+
+        /// <summary>
         /// <see cref="MenuItem"/> Constructor.
         /// </summary>
         /// <param name="name">The name of the <see cref="MenuItem"/>.</param>
         /// <param name="price">The price of the <see cref="MenuItem"/>.</param>
-        public MenuItem(string name, double price)
+        /// <param name="category">The <see cref="MenuItemCategory"/> of this <see cref="MenuItem"/>.</param>
+        public MenuItem(string name, double price, MenuItemCategory category)
         {
             // Salience checks.
             //
@@ -33,6 +55,7 @@ namespace CafeX
             // Set the member items.
             this.Name = name;
             this.Price = price;
+            this.Category = category;
         }
 
         /// <summary>
@@ -44,5 +67,10 @@ namespace CafeX
         /// The price of the menu item.
         /// </summary>
         public double Price { get; private set; }
+
+        /// <summary>
+        /// The <see cref="MenuItemCategory"/> to which this <see cref="MenuItem"/> belongs.
+        /// </summary>
+        public MenuItemCategory Category { get; private set; }
     }
 }

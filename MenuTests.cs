@@ -76,5 +76,45 @@ namespace CafeX
             if (calculatedCost != 3.5)
                 throw new Exception($"A cost of 3.5 was expected but a cost of {calculatedCost} was calculated.");
         }
+
+        /// <summary>
+        /// Checks that the appropriate service charges are calculated.
+        /// </summary>
+        public static void Test4_Check_ServiceCharges()
+        {
+            string issuesWithOrder = default(string);
+
+            // Calculate a drinks only service charge.
+            double serviceCharge = Menu.CalculateServiceCharge(new List<string> { "Cola", "Coffee", "Cola", "Coffee", "Cola", "Coffee" },
+                                                               out issuesWithOrder);
+
+            // A drinks only order should have no service charge.
+            if (serviceCharge != 0.0)
+                throw new Exception($"A drinks only order should have no service charge but {serviceCharge} was calculated.");
+
+            // Drinks and cold food order (£5.50).
+            serviceCharge = Menu.CalculateServiceCharge(new List<string> { "Cola", "Coffee", "Cheese Sandwich", "Cheese Sandwich" },
+                                                        out issuesWithOrder);
+
+            // And verify the service charge is 55p @ 10%.
+            if (serviceCharge != 0.55)
+                throw new Exception($"A 0.55 service charge was expected but {serviceCharge} was calculated.");
+
+            // Drinks, cold and hot food order (£11.00).
+            serviceCharge = Menu.CalculateServiceCharge(new List<string> { "Cola", "Coffee", "Coffee", "Cheese Sandwich", "Cheese Sandwich", "Steak Sandwich" },
+                                                        out issuesWithOrder);
+
+            // And verify the service charge is £2.20 @ 20%.
+            if (serviceCharge != 2.2)
+                throw new Exception($"A 1.1 service charge was expected but {serviceCharge} was calculated.");
+
+            // Lets have 30 steak sandwiches (£120).
+            serviceCharge = Menu.CalculateServiceCharge(new List<string>(Enumerable.Repeat("Steak Sandwich", 30).ToArray()),
+                                                        out issuesWithOrder);
+
+            // And verify the service charge is the maximum £20 surcharge (even though 20% of this bill would have been £24).
+            if (serviceCharge != 20.0)
+                throw new Exception($"A maximum 20 service charge was expected but {serviceCharge} was calculated.");
+        }
     }
 }

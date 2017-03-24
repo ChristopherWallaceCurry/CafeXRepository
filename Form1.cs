@@ -23,6 +23,7 @@ namespace CafeX
             MenuTests.Test1_Verify_MenuItem_Prices();
             MenuTests.Test2_Check_Unknown_MenuItem();
             MenuTests.Test3_Check_Standard_Bill();
+            MenuTests.Test4_Check_ServiceCharges();
         }
     }
 }
